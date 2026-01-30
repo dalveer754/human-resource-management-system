@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>HRMS Lite</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <style>
+        body {
+            font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont;
+        }
+    </style>
+</head>
+
+<body class="bg-emerald-100 text-gray-800">
+
+<!-- TOP NAV -->
+<header class="bg-emerald-500 border-b sticky top-0 z-50">
+    <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+        <div>
+            <h1 class="text-xl font-semibold text-white">HRMS Lite</h1>
+            <p class="text-xs text-emerald-100">Employee & Attendance Management</p>
+        </div>
+
+        <nav class="space-x-6 text-sm font-medium ">
+            <a href="/" class="hover:text-blue-600">Add Employee</a>
+            <a href="/employees/" class="hover:text-blue-600">Employee Records</a>
+            <a href="/attendance/" class="hover:text-blue-600">Mark Attendance</a>
+            <a href="/attendance-records/" class="hover:text-blue-600">Attendance Records</a>
+        </nav>
+    </div>
+</header>
+
+<!-- PAGE WRAPPER -->
+
+    {% block content %}{% endblock %}
+<footer class="border-t bg-white mt-16">
+    <div class="max-w-7xl mx-auto px-6 py-6 text-xs text-gray-500 text-center">
+        © 2026 HRMS Lite · Internal Tool
+    </div>
+</footer>
+
+
+
+</body>
+</html>

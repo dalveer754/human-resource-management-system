@@ -1,0 +1,73 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<!-- PAGE HEADER -->
+<section class="mb-10 text-center">
+    <h2 class="text-3xl font-semibold text-gray-900">
+        Add New Employee
+    </h2>
+    <p class="text-gray-500 mt-2">
+        Create and manage a new employee profile within the organization
+    </p>
+</section>
+
+<!-- CENTERED FORM -->
+<div class="flex justify-center">
+    <section class="w-full max-w-3xl bg-white rounded-2xl border border-gray-100 shadow-md">
+        
+        <!-- CARD HEADER -->
+        <div class="px-8 py-6 border-b border-gray-100 bg-gray-50 rounded-t-2xl">
+            <h3 class="text-lg font-semibold text-gray-800">
+                Employee Details
+            </h3>
+            <p class="text-sm text-gray-500 mt-1">
+                Provide the essential information required to onboard an employee
+            </p>
+        </div>
+
+        <!-- FORM -->
+        <form method="post" class="px-8 py-6 space-y-6">
+            {% csrf_token %}
+
+            <div>
+                <label class="block text-sm font-medium text-gray-600 mb-1">
+                    Employee ID
+                </label>
+                {{ form.employee_id }}
+            </div>
+
+            <div>
+                <label class="block text-sm font-medium text-gray-600 mb-1">
+                    Full Name
+                </label>
+                {{ form.full_name }}
+            </div>
+
+            <div>
+                <label class="block text-sm font-medium text-gray-600 mb-1">
+                    Email Address
+                </label>
+                {{ form.email }}
+            </div>
+
+            <div>
+                <label class="block text-sm font-medium text-gray-600 mb-1">
+                    Department
+                </label>
+                {{ form.department }}
+            </div>
+
+            <button
+                type="submit"
+                class="w-full mt-6 bg-emerald-500 hover:bg-emerald-600 text-white py-2.5 rounded-lg font-medium transition"
+                onclick = "alert('Employee Added Successfully')"
+            > 
+                Add Employee
+            </button>
+        </form>
+
+    </section>
+</div>
+
+{% endblock %}

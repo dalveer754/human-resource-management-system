@@ -1,0 +1,63 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<!-- PAGE HEADER -->
+<section class="mb-10 text-center">
+    <h2 class="text-3xl font-semibold text-gray-900">
+        Mark Attendance
+    </h2>
+    <p class="text-gray-500 mt-2">
+        Record daily attendance for employees
+    </p>
+</section>
+
+<!-- CENTERED FORM -->
+<div class="flex justify-center">
+    <section class="w-full max-w-3xl bg-white rounded-2xl border border-gray-200 shadow-sm">
+
+        <div class="px-8 py-6 border-b bg-gray-50 rounded-t-2xl text-center">
+            <h3 class="text-lg font-semibold text-gray-900">
+                Attendance Entry
+            </h3>
+            <p class="text-sm text-gray-500 mt-1">
+                Select an employee, date, and attendance status
+            </p>
+        </div>
+
+        <form method="post" class="px-8 py-6 space-y-6">
+            {% csrf_token %}
+
+            <div>
+                <label class="block text-sm font-medium text-gray-700 mb-1">
+                    Employee
+                </label>
+                {{ form.employee }}
+            </div>
+
+            <div>
+                <label class="block text-sm font-medium text-gray-700 mb-1">
+                    Attendance Date
+                </label>
+                {{ form.date }}
+            </div>
+
+            <div>
+                <label class="block text-sm font-medium text-gray-700 mb-1">
+                    Status
+                </label>
+                {{ form.status }}
+            </div>
+
+            <button
+                type="submit"
+                class="w-full mt-6 bg-emerald-600 hover:bg-emerald-700 text-white py-2.5 rounded-lg font-medium transition"
+            >
+                Save Attendance
+            </button>
+        </form>
+
+    </section>
+</div>
+
+{% endblock %}
