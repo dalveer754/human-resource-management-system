@@ -40,6 +40,36 @@ The project focuses on simplicity, usability, and core HR functionality without 
 
 ## 📁 Project Structure
 
+hrms_lite/
+├── hrms/ # Project settings
+├── hrms_app/ # Core application
+│ ├── models.py
+│ ├── views.py
+│ ├── forms.py
+│ ├── urls.py
+│ ├── templates/
+│ └── static/
+│ └── js/
+│ └── main.js
+├── db.sqlite3
+├── manage.py
+└── README.md
+
+
+---
+
+## 🖥️ Run the Project Locally
+
+Follow the steps below to run the HRMS Lite project on your local machine.
+
+### 1️⃣ Clone the repository
+```bash
+git clone https://github.com/your-username/hrms_lite.git
+cd hrms_lite
+pip install -r requirements.txt
+python manage.py migrate
+python manage.py collectstatic
+python manage.py runserver
 
 
 ## 🔐 Admin Access
@@ -49,4 +79,9 @@ Use the following credentials to access the Django Admin panel:
 **Admin URL**  
 http://127.0.0.1:8000/admin/
 Username - admin
-Password - admin123
+Password - admin@123
+
+**for server**
+https://hrms-lite-5du2.onrender.com/
+Username - admin
+Password - admin@123
