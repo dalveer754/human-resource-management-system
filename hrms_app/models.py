@@ -11,8 +11,6 @@ class Employee(models.Model):
         return f"{self.full_name}"
 
 
-
-
 class Attendance(models.Model):
     STATUS_CHOICES = [
         ('Present', 'Present'),

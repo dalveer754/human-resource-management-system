@@ -14,7 +14,7 @@
                 <input
                     type="text"
                     name="employee"
-                    value="{{ selected_employee }}"
+                    
                     placeholder="Search by name"
                     class="w-full border rounded-lg px-4 py-2 text-sm focus:ring-1 focus:ring-gray-300"
                 />
@@ -43,10 +43,10 @@
                     class="w-full border rounded-lg px-4 py-2 text-sm bg-white focus:ring-1 focus:ring-gray-300"
                 >
                     <option value="">All</option>
-                    <option value="Present" {% if selected_status == "Present" %}selected{% endif %}>
+                    <option value="present" {% if selected_status == "present" %}selected{% endif %}>
                         Present
                     </option>
-                    <option value="Absent" {% if selected_status == "Absent" %}selected{% endif %}>
+                    <option value="absent" {% if selected_status == "absent" %}selected{% endif %}>
                         Absent
                     </option>
                 </select>
@@ -56,7 +56,7 @@
             <div class="flex gap-3">
                 <button
                     type="submit"
-                    class="w-full bg-gray-900 text-white px-6 py-2 rounded-lg text-sm hover:bg-gray-800 transition"
+                    class="w-full px-6 py-2 rounded-lg text-sm bg-emerald-500 hover:bg-emerald-600 transition"
                 >
                     Apply
                 </button>
@@ -97,7 +97,7 @@
                 </td>
                 <td class="px-8 py-4">{{ r.date }}</td>
                 <td class="px-8 py-4">
-                    {% if r.status == "Present" %}
+                    {% if r.status|lower == "present" %}
                         <span class="px-3 py-1 rounded-full text-xs bg-green-100 text-green-700">
                             Present
                         </span>

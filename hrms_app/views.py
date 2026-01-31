@@ -58,10 +58,10 @@ def attendance_records(request):
         records = records.filter(employee__full_name__icontains=employee)
 
     if status:
-        records = records.filter(status=status)
+        records = records.filter(status__iexact=status)
 
     summary = Attendance.objects.filter(
-        status="Present"
+        status__iexact="present"
     ).values(
         "employee__full_name"
     ).annotate(
