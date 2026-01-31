@@ -1,0 +1,75 @@
+{% extends "base.html" %}
+{% block content %}
+
+<div class="max-w-7xl mx-auto px-6 py-10">
+
+  <!-- Page Title -->
+  <div class="mb-10">
+    <h1 class="text-3xl font-semibold text-gray-900">Dashboard</h1>
+    <p class="text-gray-500 mt-1">Employee & attendance overview</p>
+  </div>
+
+  <!-- Cards -->
+  <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+
+    <!-- Employees -->
+    <div class="bg-white rounded-2xl p-6 border shadow-sm hover:shadow-md transition">
+      <div class="flex items-center justify-between mb-4">
+        <span class="text-sm font-medium text-gray-500">Employees</span>
+        <div class="w-9 h-9 rounded-lg bg-blue-50 flex items-center justify-center text-blue-600 text-lg">
+          👤
+        </div>
+      </div>
+      <div class="text-4xl font-bold text-gray-900">
+        {{ total_employees }}
+      </div>
+      <p class="text-sm text-gray-400 mt-2">Registered employees</p>
+    </div>
+
+    <!-- Attendance Records -->
+    <div class="bg-white rounded-2xl p-6 border shadow-sm hover:shadow-md transition">
+      <div class="flex items-center justify-between mb-4">
+        <span class="text-sm font-medium text-gray-500">Attendance Records</span>
+        <div class="w-9 h-9 rounded-lg bg-purple-50 flex items-center justify-center text-purple-600 text-lg">
+          📋
+        </div>
+      </div>
+      <div class="text-4xl font-bold text-gray-900">
+        {{ total_records }}
+      </div>
+      <p class="text-sm text-gray-400 mt-2">Total entries</p>
+    </div>
+
+    <!-- Present -->
+    <div class="bg-white rounded-2xl p-6 border shadow-sm hover:shadow-md transition">
+      <div class="flex items-center justify-between mb-4">
+        <span class="text-sm font-medium text-gray-500">Present</span>
+        <div class="w-9 h-9 rounded-lg bg-green-50 flex items-center justify-center text-green-600 text-lg">
+          ✓
+        </div>
+      </div>
+      <div class="text-4xl font-bold text-green-600">
+        {{ total_present }}
+      </div>
+      <p class="text-sm text-gray-400 mt-2">Marked present</p>
+    </div>
+
+    <!-- Absent -->
+    <div class="bg-white rounded-2xl p-6 border shadow-sm hover:shadow-md transition">
+      <div class="flex items-center justify-between mb-4">
+        <span class="text-sm font-medium text-gray-500">Absent</span>
+        <div class="w-9 h-9 rounded-lg bg-red-50 flex items-center justify-center text-red-600 text-lg">
+          ✕
+        </div>
+      </div>
+      <div class="text-4xl font-bold text-red-600">
+        {{ total_absent }}
+      </div>
+      <p class="text-sm text-gray-400 mt-2">Marked absent</p>
+    </div>
+
+  </div>
+
+</div>
+
+{% endblock %}

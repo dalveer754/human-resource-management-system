@@ -1,14 +1,83 @@
 {% extends "base.html" %}
 
 {% block content %}
+<!-- Filter Card -->
+<section class="bg-white border rounded-2xl shadow-sm p-6 mb-10">
+    <form method="get">
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-6 items-end">
+
+            <!-- Employee Name -->
+            <div>
+                <label class="block text-sm font-medium text-gray-600 mb-1">
+                    Employee Name
+                </label>
+                <input
+                    type="text"
+                    name="employee"
+                    value="{{ selected_employee }}"
+                    placeholder="Search by name"
+                    class="w-full border rounded-lg px-4 py-2 text-sm focus:ring-1 focus:ring-gray-300"
+                />
+            </div>
+
+            <!-- Date -->
+            <div>
+                <label class="block text-sm font-medium text-gray-600 mb-1">
+                    Date
+                </label>
+                <input
+                    type="date"
+                    name="date"
+                    value="{{ selected_date }}"
+                    class="w-full border rounded-lg px-4 py-2 text-sm focus:ring-1 focus:ring-gray-300"
+                />
+            </div>
+
+            <!-- Status -->
+            <div>
+                <label class="block text-sm font-medium text-gray-600 mb-1">
+                    Status
+                </label>
+                <select
+                    name="status"
+                    class="w-full border rounded-lg px-4 py-2 text-sm bg-white focus:ring-1 focus:ring-gray-300"
+                >
+                    <option value="">All</option>
+                    <option value="Present" {% if selected_status == "Present" %}selected{% endif %}>
+                        Present
+                    </option>
+                    <option value="Absent" {% if selected_status == "Absent" %}selected{% endif %}>
+                        Absent
+                    </option>
+                </select>
+            </div>
+
+            <!-- Actions -->
+            <div class="flex gap-3">
+                <button
+                    type="submit"
+                    class="w-full bg-gray-900 text-white px-6 py-2 rounded-lg text-sm hover:bg-gray-800 transition"
+                >
+                    Apply
+                </button>
+
+                <a
+                    href="{% url 'attendance_records' %}"
+                    class="w-full text-center border border-gray-300 px-6 py-2 rounded-lg text-sm text-gray-600 hover:bg-gray-50 transition"
+                >
+                    Clear
+                </a>
+            </div>
+
+        </div>
+    </form>
+</section>
+
 
 <section class="mb-10">
-    <h2 class="text-3xl font-semibold text-gray-900">
+    <h2 class="text-3xl font-semibold text-gray-900 pl-4">
         Attendance Records
     </h2>
-    <p class="text-gray-500 mt-2">
-        View historical attendance data
-    </p>
 </section>
 
 <section class="bg-white rounded-2xl border shadow-sm">
@@ -48,6 +117,34 @@
             {% endfor %}
         </tbody>
     </table>
+</section>
+<section class="mt-10">
+    <h3 class="text-xl font-semibold mb-4 pl-4">Total Present</h3>
+
+    <div class="bg-white rounded-xl border shadow-sm">
+        <table class="w-full text-sm">
+            <thead class="bg-gray-100 text-gray-600 uppercase text-xs">
+                <tr>
+                    <th class="px-6 py-3 text-left">Employee</th>
+                    <th class="px-6 py-3 text-left">Total Present</th>
+                </tr>
+            </thead>
+            <tbody class="divide-y">
+                {% for s in summary %}
+                <tr>
+                    <td class="px-6 py-3">{{ s.employee__full_name }}</td>
+                    <td class="px-6 py-3 font-semibold">{{ s.total_present }}</td>
+                </tr>
+                {% empty %}
+                <tr>
+                    <td colspan="2" class="px-6 py-6 text-center text-gray-400">
+                        No data available
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
 </section>
 
 {% endblock %}
